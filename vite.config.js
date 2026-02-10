@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     // IMPORTANT: Replace 'YOUR-REPO-NAME' with your actual GitHub repository name
     // Example: if your repo is 'my-portfolio', then base: '/my-portfolio/'
-    base: '/YOUR-REPO-NAME/',
+    base: '/B-BCafe.com/',
 
     build: {
         outDir: 'dist',
