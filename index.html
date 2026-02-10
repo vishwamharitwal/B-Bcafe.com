@@ -138,7 +138,9 @@
             for (let i = 0; i < frameCount; i++) {
               const frameNum = (i + startFrame).toString().padStart(3, '0');
               const img = new Image();
-              img.src = `/animation/Smooth_cinematic_transition_202602071505_6tn_${frameNum}.jpg`;
+              // GitHub Pages base path
+              const basePath = window.location.hostname === 'localhost' ? '' : '/B-BCafe.com';
+              img.src = `${basePath}/animation/Smooth_cinematic_transition_202602071505_6tn_${frameNum}.jpg`;
 
               img.onload = () => {
                 imagesLoaded++;
