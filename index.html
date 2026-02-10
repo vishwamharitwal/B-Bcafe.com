@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="B&B - Brew and Brunch. A luxury culinary experience blending artisanal coffee with gourmet dining." />
+  <title>B&B | The Art of Brew & Brunch</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bnb-cafe.com/" />
+  <meta property="og:title" content="B&B | The Art of Brew & Brunch" />
+  <meta property="og:description"
+    content="A luxury culinary experience blending artisanal coffee with gourmet dining. Book your table today." />
+  <meta property="og:image" content="/photos &videos/unnamed.webp" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://bnb-cafe.com/" />
+  <meta property="twitter:title" content="B&B | The Art of Brew & Brunch" />
+  <meta property="twitter:description"
+    content="A luxury culinary experience blending artisanal coffee with gourmet dining." />
+  <meta property="twitter:image" content="/photos &videos/unnamed.webp" />
+
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="is-loading">
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <span class="brand-reveal">B&B</span>
+      <div class="progress-line"></div>
+    </div>
+  </div>
+
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- Navigation -->
+      <nav id="navbar">
+        <div class="nav-container container">
+          <a href="#" class="logo">
+            <span class="logo-text">B&B</span>
+          </a>
+
+          <div class="nav-right">
+            <ul class="nav-links">
+              <li><a href="#hero" class="hover-underline">Home</a></li>
+              <li><a href="#brand-story" class="hover-underline">Story</a></li>
+              <li><a href="#menu" class="hover-underline">Menu</a></li>
+              <li><a href="#visit" class="hover-underline">Visit</a></li>
+            </ul>
+            <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table" class="btn-reservation"
+              target="_blank" rel="noopener noreferrer">
+              <span>Book Table</span>
+              <div class="btn-fill"></div>
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle" role="button" aria-label="Toggle Navigation Menu"
+              tabindex="0">
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobile-menu">
+          <div class="mobile-menu-content">
+            <ul class="mobile-links">
+              <li><a href="#hero" class="mobile-link">Home</a></li>
+              <li><a href="#brand-story" class="mobile-link">Story</a></li>
+              <li><a href="#menu" class="mobile-link">Menu</a></li>
+              <li><a href="#visit" class="mobile-link">Visit</a></li>
+            </ul>
+            <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table"
+              class="btn-primary mobile-book-btn" target="_blank" rel="noopener noreferrer">Book a Table</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- 1. HERO SECTION -->
+      <header id="hero" class="hero-section" data-scroll-section>
+        <div class="hero-bg">
+          <!-- Canvas strictly first -->
+          <canvas id="hero-canvas" class="bg-canvas"></canvas>
+          <div class="overlay"></div>
+        </div>
+
+        <div class="hero-content container">
+          <p class="hero-label fade-scroll">EST. 2024</p>
+          <h1 class="hero-title">
+            Where Coffee Becomes an <em>Experience</em>
+          </h1>
+          <p class="hero-subtitle fade-scroll">Crafted brews. Calm moments.</p>
+        </div>
+
+        <!-- Inline animation script - SMOOTH LOOPING -->
+        <script>
+          (function () {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) {
+              console.error('Canvas not found!');
+              return;
+            }
+
+            const ctx = canvas.getContext('2d');
+
+            // Resize canvas
+            function resizeCanvas() {
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const images = [];
+            const frameCount = 75;
+            const startFrame = 5;
+            let currentFrame = 0;
+            let imagesLoaded = 0;
+
+            console.log('B&B: Starting smooth animation load...');
+
+            // Load all images
+            for (let i = 0; i < frameCount; i++) {
+              const frameNum = (i + startFrame).toString().padStart(3, '0');
+              const img = new Image();
+              img.src = `/animation/Smooth_cinematic_transition_202602071505_6tn_${frameNum}.jpg`;
+
+              img.onload = () => {
+                imagesLoaded++;
+                if (imagesLoaded === 1) {
+                  console.log('B&B: First frame loaded!');
+                }
+                if (imagesLoaded === frameCount) {
+                  console.log('B&B: All frames loaded, starting smooth animation!');
+                  animate();
+                }
+              };
+
+              img.onerror = () => {
+                console.error('B&B: Failed to load:', img.src);
+              };
+
+              images.push(img);
+            }
+
+            // Render current frame
+            function renderFrame() {
+              const img = images[currentFrame];
+
+              if (img && img.complete && img.naturalWidth > 0) {
+                // Landscape optimization - use cover for wide screens
+                const isLandscape = canvas.width > canvas.height;
+                const scale = isLandscape
+                  ? Math.max(canvas.width / img.width, canvas.height / img.height) // cover for landscape
+                  : Math.min(canvas.width / img.width, canvas.height / img.height); // contain for portrait
+
+                const x = (canvas.width - img.width * scale) / 2;
+                const y = (canvas.height - img.height * scale) / 2;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+              }
+            }
+
+            // Smooth animation loop
+            function animate() {
+              renderFrame();
+              currentFrame = (currentFrame + 1) % frameCount; // Loop back to start
+              setTimeout(animate, 1000 / 24); // 24 FPS for smooth playback
+            }
+
+            // Re-render on resize
+            window.addEventListener('resize', renderFrame);
+          })();
+        </script>
+      </header>
+
+      <!-- 2. BRAND STORY SECTION -->
+      <section id="brand-story" class="story-section section-padding" data-scroll-section>
+        <div class="container">
+          <div class="grid-2-col-asym">
+            <div class="story-content">
+              <span class="overline fade-scroll">Our Origins</span>
+              <h2 class="section-title fade-scroll">The Art of <br><em>Slowing Down</em></h2>
+              <p class="body-text fade-scroll">
+                Born from a passion for ethically sourced beans and the ritual of the pour-over.
+                We created B&B as a refuge from the noise—a space designed to foster connection,
+                creativity, and quiet reflection.
+              </p>
+              <p class="body-text fade-scroll">
+                Every cup tells a story of careful sourcing, precise roasting, and the
+                hands that crafted it.
+              </p>
+              <a href="#menu" class="btn-text fade-scroll">Read Our Philosophy</a>
+            </div>
+            <div class="story-image parallax-img fade-scroll">
+              <img src="/photos &videos/menu/2025-04-13.webp" alt="Artisan Pour Over" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PILLARS / SIGNATURE OFFERINGS -->
+      <section id="pillars" class="pillars-section section-padding bg-light" data-scroll-section>
+        <div class="container">
+          <div class="pillars-grid">
+            <!-- Pillar 1 -->
+            <div class="pillar-card fade-scroll">
+              <div class="pillar-icon">☕</div>
+              <h3>Artisan Coffee</h3>
+              <p>Ethically sourced single-origin beans, roasted to perfection and brewed with precision.</p>
+            </div>
+            <!-- Pillar 2 -->
+            <div class="pillar-card fade-scroll delay-1">
+              <div class="pillar-icon">🥐</div>
+              <h3>Freshly Crafted</h3>
+              <p>Seasonal pastries and gourmet plates, baked fresh daily in our kitchen.</p>
+            </div>
+            <!-- Pillar 3 -->
+            <div class="pillar-card fade-scroll delay-2">
+              <div class="pillar-icon">🌿</div>
+              <h3>Calm Sanctuary</h3>
+              <p>A thoughtfully designed space for focus, conversation, and escaping the rush.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. MENU SECTION -->
+      <section id="menu" class="menu-section section-padding" data-scroll-section>
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="overline fade-scroll">Curated Selection</span>
+            <h2 class="section-title fade-scroll">Signature <em>Taste</em></h2>
+          </div>
+
+          <div class="menu-grid-refined">
+            <!-- Item 1 -->
+            <div class="menu-item fade-scroll">
+              <div class="item-image">
+                <img src="/photos &videos/menu/2025-04-13 (1).webp" alt="Velvet Latte" loading="lazy">
+              </div>
+              <div class="item-info">
+                <div class="item-header">
+                  <h3>Velvet Latte</h3>
+                  <span class="price">$6.00</span>
+                </div>
+                <p class="item-desc">House blend with oat milk and vanilla bean.</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item fade-scroll delay-1">
+              <div class="item-image">
+                <img src="/photos &videos/menu/2025-04-13 (2).webp" alt="Nitro Cold Brew" loading="lazy">
+              </div>
+              <div class="item-info">
+                <div class="item-header">
+                  <h3>Nitro Cold Brew</h3>
+                  <span class="price">$6.50</span>
+                </div>
+                <p class="item-desc">24-hour steeped, nitrogen-infused for creaminess.</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item fade-scroll delay-2">
+              <div class="item-image">
+                <img src="/photos &videos/menu/2025-04-13 (5).webp" alt="Almond Croissant" loading="lazy">
+              </div>
+              <div class="item-info">
+                <div class="item-header">
+                  <h3>Almond Croissant</h3>
+                  <span class="price">$5.00</span>
+                </div>
+                <p class="item-desc">Flaky pastry filled with artisan almond cream.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-lg fade-scroll">
+            <a href="#" class="btn-primary magnetic">View Full Menu</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. AMBIENCE SECTION -->
+      <section id="ambience" class="ambience-section" data-scroll-section>
+        <div class="ambience-bg parallax-bg">
+          <!-- Using one of the other refined images for ambience -->
+          <img src="/photos &videos/menu/2025-04-13 (4).webp" alt="Cafe Ambience" class="bg-img-full"
+            style="opacity: 0.4;">
+        </div>
+        <div class="ambience-content container text-center">
+          <h2 class="quote-text fade-scroll">
+            "A space designed for quiet mornings and <br><em>thoughtful conversations</em>."
+          </h2>
+        </div>
+      </section>
+
+      <!-- 6. CTA / NEWSLETTER -->
+      <section id="cta" class="cta-section section-padding bg-light" data-scroll-section>
+        <div class="container text-center max-w-md">
+          <h2 class="section-title fade-scroll">Stay Connected</h2>
+          <p class="body-text fade-scroll">Join our list for new menu launches, brewing workshops, and café updates.</p>
+          <form class="newsletter-form fade-scroll">
+            <input type="email" placeholder="Your email address" aria-label="Email Address">
+            <button type="submit" class="btn-accent">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- 7. FOOTER -->
+      <footer id="visit" class="footer-section section-padding" data-scroll-section>
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <span class="logo-text">B&B</span>
+              <p class="footer-tagline">The Art of Brew & Brunch</p>
+            </div>
+            <div class="footer-nav">
+              <h4>Explore</h4>
+              <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#brand-story">Story</a></li>
+                <li><a href="#ambience">Gallery</a></li>
+              </ul>
+            </div>
+            <div class="footer-contact">
+              <h4>Visit Us</h4>
+              <p>123 Artisan Avenue<br>Metropolis, NY 10012</p>
+              <p>hello@bnb-cafe.com</p>
+            </div>
+            <div class="footer-social">
+              <h4>Follow</h4>
+              <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 B&B Café. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- /smooth-content -->
+  </div><!-- /smooth-wrapper -->
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
