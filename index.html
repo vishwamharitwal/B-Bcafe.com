@@ -39,9 +39,6 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: blue !important;
-      /* DEBUG: CACHE TEST */
-      z-index: 9999;
     }
   </style>
 </head>
@@ -59,49 +56,51 @@
     </div>
   </div>
 
-  <!-- Navigation (Moved Outside Wrapper) -->
-  <nav id="navbar">
-    <div class="nav-container container">
-      <a href="#" class="logo">
-        <span class="logo-text">B&B</span>
-      </a>
 
-      <div class="nav-right">
-        <ul class="nav-links">
-          <li><a href="#hero" class="hover-underline">Home</a></li>
-          <li><a href="#brand-story" class="hover-underline">Story</a></li>
-          <li><a href="#menu" class="hover-underline">Menu</a></li>
-          <li><a href="#visit" class="hover-underline">Visit</a></li>
-        </ul>
-        <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table" class="btn-reservation"
-          target="_blank" rel="noopener noreferrer">
-          <span>Book Table</span>
-          <div class="btn-fill"></div>
-        </a>
-        <div class="mobile-toggle" id="mobile-toggle" role="button" aria-label="Toggle Navigation Menu" tabindex="0">
-          <span class="line"></span>
-          <span class="line"></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
-      <div class="mobile-menu-content">
-        <ul class="mobile-links">
-          <li><a href="#hero" class="mobile-link">Home</a></li>
-          <li><a href="#brand-story" class="mobile-link">Story</a></li>
-          <li><a href="#menu" class="mobile-link">Menu</a></li>
-          <li><a href="#visit" class="mobile-link">Visit</a></li>
-        </ul>
-        <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table" class="btn-primary mobile-book-btn"
-          target="_blank" rel="noopener noreferrer">Book a Table</a>
-      </div>
-    </div>
-  </nav>
 
   <div id="smooth-wrapper">
     <div id="smooth-content">
+      <!-- Navigation -->
+      <nav id="navbar">
+        <div class="nav-container container">
+          <a href="#" class="logo">
+            <span class="logo-text">B&B</span>
+          </a>
+
+          <div class="nav-right">
+            <ul class="nav-links">
+              <li><a href="#hero" class="hover-underline">Home</a></li>
+              <li><a href="#brand-story" class="hover-underline">Story</a></li>
+              <li><a href="#menu" class="hover-underline">Menu</a></li>
+              <li><a href="#visit" class="hover-underline">Visit</a></li>
+            </ul>
+            <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table" class="btn-reservation"
+              target="_blank" rel="noopener noreferrer">
+              <span>Book Table</span>
+              <div class="btn-fill"></div>
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle" role="button" aria-label="Toggle Navigation Menu"
+              tabindex="0">
+              <span class="line"></span>
+              <span class="line"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobile-menu">
+          <div class="mobile-menu-content">
+            <ul class="mobile-links">
+              <li><a href="#hero" class="mobile-link">Home</a></li>
+              <li><a href="#brand-story" class="mobile-link">Story</a></li>
+              <li><a href="#menu" class="mobile-link">Menu</a></li>
+              <li><a href="#visit" class="mobile-link">Visit</a></li>
+            </ul>
+            <a href="https://wa.me/917073925559?text=I%20want%20to%20book%20a%20table"
+              class="btn-primary mobile-book-btn" target="_blank" rel="noopener noreferrer">Book a Table</a>
+          </div>
+        </div>
+      </nav>
 
 
 
