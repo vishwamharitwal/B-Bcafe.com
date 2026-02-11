@@ -697,12 +697,15 @@ em {
     gap: var(--spacing-sm);
   }
 
-  /* Image first on mobile */
-}
+  .story-image {
+    height: 400px;
+    order: -1;
+    /* Image first on mobile */
+  }
 
-.newsletter-form {
-  flex-direction: column;
-}
+  .newsletter-form {
+    flex-direction: column;
+  }
 }
 
 /* --- Mobile Navigation & Layout Fixes --- */
@@ -715,16 +718,30 @@ em {
     --spacing-md: 2rem;
   }
 
-  /* 2. Navigation */
+  /* 2. Navigation - Force Hide Desktop Elements */
   .nav-links,
   .btn-reservation {
-    display: none;
-    /* Hide desktop nav */
+    display: none !important;
+  }
+
+  /* 3. Layout Fixes for Header */
+  .nav-container {
+    justify-content: space-between;
+    /* Logo Left, Toggle Right */
+    width: 90%;
+  }
+
+  .nav-right {
+    gap: 0;
+    /* Remove gap since only toggle is visible */
   }
 
   .mobile-toggle {
     display: flex;
     /* Show burger menu */
+    position: relative;
+    margin-left: auto;
+    /* Push to far right if flex fails */
   }
 
   /* 3. Typography Adjustments */
