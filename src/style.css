@@ -719,30 +719,44 @@ em {
   }
 
   /* 2. Navigation - Force Hide Desktop Elements */
-  .nav-links,
-  .btn-reservation {
+  /* 2. Navigation - Only Hide Links, Keep Button */
+  .nav-links {
     display: none !important;
   }
 
   /* 3. Layout Fixes for Header */
   .nav-container {
     justify-content: space-between;
-    /* Logo Left, Toggle Right */
     width: 90%;
   }
 
   .nav-right {
-    gap: 0;
-    /* Remove gap since only toggle is visible */
+    gap: 1rem;
+    display: flex;
+    align-items: center;
   }
 
+  /* Optimize 'Book Table' for Mobile - Compact Version */
+  .btn-reservation {
+    display: flex !important;
+    /* Force Show */
+    padding: 8px 16px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  /* Ensure Toggle is Visible */
   .mobile-toggle {
     display: flex;
-    /* Show burger menu */
-    position: relative;
-    margin-left: auto;
-    /* Push to far right if flex fails */
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    z-index: 1001;
+    /* High Z-Index */
+    margin-left: 0;
   }
+
+
 
   /* 3. Typography Adjustments */
   .section-title {
