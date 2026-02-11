@@ -165,11 +165,8 @@
               const img = images[currentFrame];
 
               if (img && img.complete && img.naturalWidth > 0) {
-                // Landscape optimization - use cover for wide screens
-                const isLandscape = canvas.width > canvas.height;
-                const scale = isLandscape
-                  ? Math.max(canvas.width / img.width, canvas.height / img.height) // cover for landscape
-                  : Math.min(canvas.width / img.width, canvas.height / img.height); // contain for portrait
+                // Always use COVER for immersive feel on both Desktop and Mobile
+                const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
 
                 const x = (canvas.width - img.width * scale) / 2;
                 const y = (canvas.height - img.height * scale) / 2;

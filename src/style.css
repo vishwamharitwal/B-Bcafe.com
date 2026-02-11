@@ -437,7 +437,7 @@ em {
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 7vw, 7rem);
+  font-size: clamp(2.2rem, 6vw, 6rem);
   /* Slightly refined size */
   text-transform: none;
   /* Elegant sentence case */
