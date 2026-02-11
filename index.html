@@ -33,12 +33,21 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
   <style>
-    /* Critical Inline Fix to Bypass Cache */
+    /* Critical Fix: Solid Black Fixed Header */
     #navbar {
-      position: absolute !important;
+      position: fixed !important;
       top: 0;
       left: 0;
       width: 100%;
+      background-color: #0d0d0d !important;
+      /* Solid Theme Black */
+      z-index: 1000;
+      mix-blend-mode: normal !important;
+      /* No color mixing */
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      /* Subtle Gold Border */
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
   </style>
 </head>
