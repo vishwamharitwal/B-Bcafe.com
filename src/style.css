@@ -187,7 +187,7 @@ h4 {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 8rem);
   text-transform: uppercase;
   letter-spacing: -0.02em;
 }
@@ -437,7 +437,7 @@ em {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 7vw, 7rem);
+  font-size: clamp(2.5rem, 7vw, 7rem);
   /* Slightly refined size */
   text-transform: none;
   /* Elegant sentence case */
@@ -481,7 +481,7 @@ em {
 /* --- Pillars Section --- */
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--spacing-md);
   text-align: center;
 }
@@ -511,7 +511,7 @@ em {
 /* (Replaces old tabs logic or coexists if kept, but structure suggests grid) */
 .menu-grid-refined {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
 }
@@ -697,14 +697,63 @@ em {
     gap: var(--spacing-sm);
   }
 
-  .story-image {
-    height: 400px;
-    order: -1;
-    /* Image first on mobile */
+  /* Image first on mobile */
+}
+
+.newsletter-form {
+  flex-direction: column;
+}
+}
+
+/* --- Mobile Navigation & Layout Fixes --- */
+@media (max-width: 768px) {
+
+  /* 1. Reset Spacing for Mobile */
+  :root {
+    --spacing-xl: 5rem;
+    --spacing-lg: 3rem;
+    --spacing-md: 2rem;
   }
 
-  .newsletter-form {
-    flex-direction: column;
+  /* 2. Navigation */
+  .nav-links,
+  .btn-reservation {
+    display: none;
+    /* Hide desktop nav */
+  }
+
+  .mobile-toggle {
+    display: flex;
+    /* Show burger menu */
+  }
+
+  /* 3. Typography Adjustments */
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .quote-text {
+    font-size: 1.8rem;
+  }
+
+  /* 4. Layout Fixes */
+  .container {
+    width: 90%;
+  }
+
+  .grid-2-col-asym {
+    grid-template-columns: 1fr;
+  }
+
+  .story-image {
+    height: 300px;
+    /* Smaller image on mobile */
+  }
+
+  /* ensure hero text doesn't overflow */
+  .hero-content {
+    width: 100%;
+    padding: 0 1rem;
   }
 }
 
