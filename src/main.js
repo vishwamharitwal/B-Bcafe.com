@@ -159,27 +159,7 @@ let lastScroll = 0;
 const navbar = document.getElementById('navbar');
 
 if (navbar) {
-  window.addEventListener('scroll', throttle(() => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 50) {
-      navbar.classList.add('scrolled');
-      navbar.style.background = 'rgba(15, 15, 17, 0.9)';
-      navbar.style.backdropFilter = 'blur(10px)';
-    } else {
-      navbar.classList.remove('scrolled');
-      navbar.style.background = 'transparent';
-      navbar.style.backdropFilter = 'none';
-    }
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      navbar.classList.add('hidden');
-    } else {
-      navbar.classList.remove('hidden');
-    }
-
-    lastScroll = currentScroll;
-  }, 100)); // Run at most once every 100ms
+  // Navbar scroll logic removed as per user request (static/absolute positioning)
 }
 
 /**
