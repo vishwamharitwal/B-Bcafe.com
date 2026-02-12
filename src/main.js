@@ -171,19 +171,38 @@ const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-book-btn');
 const body = document.body;
 
 if (mobileToggle && mobileMenu) {
-  mobileToggle.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    body.classList.toggle('no-scroll');
-  });
+  const mobileBackdrop = document.getElementById('mobile-backdrop');
+
+  const toggleMenu = () => {
+    const isActive = mobileMenu.classList.contains('active');
+    if (isActive) {
+      closeMenu();
+    } else {
+      mobileToggle.classList.add('active');
+      mobileMenu.classList.add('active');
+      if (mobileBackdrop) mobileBackdrop.classList.add('active');
+      body.classList.add('no-scroll');
+    }
+  };
+
+  const closeMenu = () => {
+    mobileToggle.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    if (mobileBackdrop) mobileBackdrop.classList.remove('active');
+    body.classList.remove('no-scroll');
+  };
+
+  mobileToggle.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking the backdrop
+  if (mobileBackdrop) {
+    mobileBackdrop.addEventListener('click', closeMenu);
+  }
 
   // Close menu when a link is clicked
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileToggle.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      body.classList.remove('no-scroll');
-    });
+  const allMobileLinks = document.querySelectorAll('.mobile-link');
+  allMobileLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 }
 
