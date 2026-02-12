@@ -87,7 +87,7 @@
         border-left: 1px solid rgba(212, 175, 55, 0.2);
         opacity: 1 !important;
         visibility: visible !important;
-        transform: none !important;
+        transform: translate3d(0, 0, 0) !important;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 2000;
         display: flex;
@@ -122,8 +122,7 @@
       .mobile-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.85);
         z-index: 1999;
         opacity: 0;
         pointer-events: none;
