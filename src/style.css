@@ -32,14 +32,14 @@
   /* --- Spacing --- */
   --spacing-xs: 0.5rem;
   /* 8px */
-  --spacing-sm: 2rem;
-  /* 32px */
-  --spacing-md: 5rem;
+  --spacing-sm: 1.5rem;
+  /* 24px */
+  --spacing-md: 3rem;
+  /* 48px */
+  --spacing-lg: 5rem;
   /* 80px */
-  --spacing-lg: 8rem;
-  /* 128px */
-  --spacing-xl: 12rem;
-  /* 192px */
+  --spacing-xl: 6rem;
+  /* 96px - Reduced from 192px */
 
   /* --- UI Tokens --- */
   --radius-sm: 2px;
@@ -227,7 +227,8 @@ em {
 }
 
 .section-padding {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0;
+  /* Reduced spacing between sections */
 }
 
 .text-center {
@@ -270,7 +271,7 @@ em {
 #navbar .logo-text,
 .footer-brand .logo-text {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: -0.02em;
@@ -285,12 +286,12 @@ em {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   list-style: none;
 }
 
@@ -1192,6 +1193,7 @@ html {
 
 /* --- Mobile Responsiveness Improvements --- */
 @media (max-width: 768px) {
+
   /* Hero CTAs - Stack vertically */
   .hero-cta-group {
     flex-direction: column;
@@ -1245,9 +1247,9 @@ html {
     font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 
-  /* Spacing adjustments */
+  /* Spacing adjustments - Minimal gaps on mobile */
   .section-padding {
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
 
   .container {
@@ -1280,6 +1282,7 @@ html {
 
 /* --- Print Styles --- */
 @media print {
+
   .hero-cta-group,
   .mobile-toggle,
   .mobile-menu-overlay,

@@ -46,8 +46,8 @@
       /* No color mixing */
       border-bottom: 1px solid rgba(212, 175, 55, 0.1);
       /* Subtle Gold Border */
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     }
 
     /* Mobile Drawer & Interaction Styles (Added by Architect) */
@@ -228,7 +228,7 @@
           </div>
         </div>
 
-        <!-- Inline animation script - SMOOTH LOOPING -->
+        <!-- Inline animation script - SCROLL-BASED ANIMATION -->
         <script>
           (function () {
             const canvas = document.getElementById('hero-canvas');
@@ -238,6 +238,7 @@
             }
 
             const ctx = canvas.getContext('2d');
+            const heroSection = document.getElementById('hero');
 
             // Resize canvas
             function resizeCanvas() {
@@ -250,10 +251,9 @@
             const images = [];
             const frameCount = 75;
             const startFrame = 5;
-            let currentFrame = 0;
             let imagesLoaded = 0;
 
-            console.log('B&B: Starting smooth animation load...');
+            console.log('B&B: Starting scroll-based animation load...');
 
             // Load all images
             for (let i = 0; i < frameCount; i++) {
@@ -267,10 +267,10 @@
                 imagesLoaded++;
                 if (imagesLoaded === 1) {
                   console.log('B&B: First frame loaded!');
+                  renderFrame(0); // Show first frame immediately
                 }
                 if (imagesLoaded === frameCount) {
-                  console.log('B&B: All frames loaded, starting smooth animation!');
-                  animate();
+                  console.log('B&B: All frames loaded, scroll-based animation ready!');
                 }
               };
 
@@ -281,12 +281,12 @@
               images.push(img);
             }
 
-            // Render current frame
-            function renderFrame() {
-              const img = images[currentFrame];
+            // Render specific frame
+            function renderFrame(frameIndex) {
+              const img = images[frameIndex];
 
               if (img && img.complete && img.naturalWidth > 0) {
-                // Always use COVER for immersive feel on both Desktop and Mobile
+                // Always use COVER for immersive feel
                 const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
 
                 const x = (canvas.width - img.width * scale) / 2;
@@ -297,15 +297,33 @@
               }
             }
 
-            // Smooth animation loop
-            function animate() {
-              renderFrame();
-              currentFrame = (currentFrame + 1) % frameCount; // Loop back to start
-              setTimeout(animate, 1000 / 24); // 24 FPS for smooth playback
+            // SCROLL-BASED ANIMATION LOGIC
+            function updateAnimationOnScroll() {
+              if (!heroSection) return;
+
+              // Get hero section dimensions
+              const heroHeight = heroSection.offsetHeight;
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+              // Calculate scroll progress through hero section (0 to 1)
+              const scrollProgress = Math.min(Math.max(scrollTop / heroHeight, 0), 1);
+
+              // Map scroll progress to frame index
+              const frameIndex = Math.floor(scrollProgress * (frameCount - 1));
+
+              // Render the corresponding frame
+              renderFrame(frameIndex);
             }
 
-            // Re-render on resize
-            window.addEventListener('resize', renderFrame);
+            // Listen to scroll events
+            window.addEventListener('scroll', updateAnimationOnScroll);
+            window.addEventListener('resize', () => {
+              resizeCanvas();
+              updateAnimationOnScroll(); // Re-render current frame on resize
+            });
+
+            // Initial render
+            updateAnimationOnScroll();
           })();
         </script>
       </header>
