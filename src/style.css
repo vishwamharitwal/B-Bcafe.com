@@ -181,7 +181,8 @@ body.hovering .cursor-outline {
 
   100% {
     opacity: 1;
-    transform: translateX(calc(-50vw + 15%)) translateY(calc(-50vh + 25px)) scale(0.33);
+    /* Adjusted to match logo position (40% left shift) */
+    transform: translateX(calc(-50vw - 25%)) translateY(calc(-50vh + 25px)) scale(0.33);
   }
 }
 
@@ -282,6 +283,8 @@ em {
 #navbar .logo {
   text-decoration: none;
   z-index: 1000;
+  margin-left: -40%;
+  /* Shift logo to the left */
 }
 
 #navbar .logo-text,
