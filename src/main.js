@@ -292,3 +292,71 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 */
+
+/**
+ * PROFESSIONAL ENHANCEMENT: Smooth Scroll for Anchor Links
+ * Handles smooth scrolling with navbar offset
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const anchorLinks = document.querySelectorAll('a[href^=\"#\"]');
+  const navbar = document.querySelector('#navbar');
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+
+      // Skip if it's just "#" or empty
+      if (!href || href === '#') return;
+
+      const targetElement = document.querySelector(href);
+
+      if (targetElement) {
+        e.preventDefault();
+
+        // Calculate position with navbar offset
+        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+
+        // Update URL hash without jumping
+        if (history.pushState) {
+          history.pushState(null, null, href);
+        }
+      }
+    });
+  });
+});
+
+/**
+ * PROFESSIONAL ENHANCEMENT: Active Navigation State
+ * Highlights the current section in the navigation
+ */
+window.addEventListener('scroll', throttle(() => {
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^=\"#\"]');
+  const navbar = document.querySelector('#navbar');
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+  let currentSection = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - navbarHeight - 100;
+    const sectionHeight = section.offsetHeight;
+
+    if (window.pageYOffset >= sectionTop &&
+      window.pageYOffset < sectionTop + sectionHeight) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSection}`) {
+      link.classList.add('active');
+    }
+  });
+}, 100));
