@@ -1297,8 +1297,8 @@ html {
 
   /* Logo - Visible but more to left */
   #navbar .logo {
-    margin-left: -20% !important;
-    /* Visible but shifted left */
+    margin-left: -5% !important;
+    /* Visible and readable */
   }
 
   /* Hero Canvas - Bigger on mobile */
