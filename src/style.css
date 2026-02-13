@@ -1295,21 +1295,23 @@ html {
     padding: 0 1.5rem;
   }
 
-  /* Logo - Stick to left edge */
+  /* Logo - Visible but more to left */
   #navbar .logo {
-    margin-left: 0 !important;
-    /* Remove negative margin, stick to edge */
+    margin-left: -20% !important;
+    /* Visible but shifted left */
   }
 
-  /* Hero Canvas - Larger on mobile */
+  /* Hero Canvas - Bigger on mobile */
   #hero-canvas {
-    transform: scale(1.15);
-    /* 15% bigger for better visibility */
+    transform: scale(1.25);
+    /* 25% bigger for better visibility */
+    transform-origin: center center;
   }
 
   #hero {
     min-height: 100vh;
-    /* Ensure full height */
+    overflow: hidden;
+    /* Prevent overflow */
   }
 }
 
