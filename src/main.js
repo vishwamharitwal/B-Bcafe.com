@@ -31,19 +31,20 @@ function throttle(func, limit) {
 
 /**
  * Preloader & Initial Reveal
+ * Logo slides to navbar position, then fades out
  */
 window.addEventListener('load', () => {
   const preloader = document.querySelector('.preloader');
   const body = document.body;
 
-  // Simulate a slight delay for the logo animation to finish
+  // Wait for logo slide animation to complete (1s animation)
   setTimeout(() => {
     if (preloader) preloader.classList.add('loaded');
     if (body) body.classList.remove('is-loading');
 
     // Trigger Hero Animations
     startHeroAnimations();
-  }, 1500);
+  }, 1000);
 });
 
 function startHeroAnimations() {

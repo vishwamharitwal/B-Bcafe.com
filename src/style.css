@@ -132,16 +132,17 @@ body.hovering .cursor-outline {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
+  transition: opacity 0.5s ease;
 }
 
 .preloader.loaded {
-  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .preloader-content {
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .brand-reveal {
@@ -150,22 +151,37 @@ body.hovering .cursor-outline {
   color: var(--color-accent);
   display: block;
   opacity: 0;
-  transform: translateY(100%);
-  animation: logoUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logoSlideToNav 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .progress-line {
   width: 0;
   height: 2px;
-  background: var(--color-white);
+  background: var(--color-accent);
   margin-top: 20px;
-  animation: loadLine 1.5s ease-in-out forwards;
+  animation: loadLine 0.8s ease-in-out forwards;
 }
 
-@keyframes logoUp {
-  to {
+/* Logo slides from center to navbar position */
+@keyframes logoSlideToNav {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+
+  30% {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(calc(-50vw + 10%)) translateY(calc(-50vh + 30px)) scale(0.35);
   }
 }
 
