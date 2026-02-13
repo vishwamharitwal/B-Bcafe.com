@@ -31,20 +31,20 @@ function throttle(func, limit) {
 
 /**
  * Preloader & Initial Reveal
- * Logo slides to navbar position, then fades out
+ * Logo slides to navbar position, then fades out (6.5s elegant animation)
  */
 window.addEventListener('load', () => {
   const preloader = document.querySelector('.preloader');
   const body = document.body;
 
-  // Wait for logo slide animation to complete (1s animation)
+  // Wait for logo slide animation to complete (6.5s animation)
   setTimeout(() => {
     if (preloader) preloader.classList.add('loaded');
     if (body) body.classList.remove('is-loading');
 
     // Trigger Hero Animations
     startHeroAnimations();
-  }, 1000);
+  }, 6500);
 });
 
 function startHeroAnimations() {

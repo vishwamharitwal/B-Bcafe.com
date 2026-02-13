@@ -151,7 +151,7 @@ body.hovering .cursor-outline {
   color: var(--color-accent);
   display: block;
   opacity: 0;
-  animation: logoSlideToNav 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logoSlideToNav 6.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .progress-line {
@@ -159,17 +159,17 @@ body.hovering .cursor-outline {
   height: 2px;
   background: var(--color-accent);
   margin-top: 20px;
-  animation: loadLine 0.8s ease-in-out forwards;
+  animation: loadLine 6s ease-in-out forwards;
 }
 
-/* Logo slides from center to navbar position */
+/* Logo slides from center to navbar position - SLOW & ELEGANT */
 @keyframes logoSlideToNav {
   0% {
     opacity: 0;
     transform: scale(1.2);
   }
 
-  30% {
+  15% {
     opacity: 1;
     transform: scale(1);
   }
@@ -181,7 +181,7 @@ body.hovering .cursor-outline {
 
   100% {
     opacity: 1;
-    transform: translateX(calc(-50vw + 10%)) translateY(calc(-50vh + 30px)) scale(0.35);
+    transform: translateX(calc(-50vw + 15%)) translateY(calc(-50vh + 25px)) scale(0.33);
   }
 }
 
