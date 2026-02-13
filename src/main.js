@@ -133,7 +133,7 @@ if (tabBtns.length > 0) {
 
 /**
  * Scroll Animations (IntersectionObserver)
- * Efficient by default, no change needed usually
+ * REPEATING ANIMATIONS - Triggers every time element enters viewport
  */
 const observerOptions = {
   threshold: 0.1,
@@ -144,7 +144,10 @@ const scrollObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      scrollObserver.unobserve(entry.target);
+      // DO NOT unobserve - let it repeat on every scroll
+    } else {
+      // Remove 'visible' when element leaves viewport
+      entry.target.classList.remove('visible');
     }
   });
 }, observerOptions);
